@@ -145,7 +145,7 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-image: url('../assets/imgs/Fundosite.png');
   background-size: cover;
 }
 
@@ -282,7 +282,7 @@ flex-direction: center;
 
 input {
   margin-bottom: 10px;
-  border: 2px solid #32b9cd;
+  border: 2px solid gray;
   padding: 10px;
   text-align: center;
   border-radius: 10px;

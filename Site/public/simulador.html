@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="./assets/icon/BurgerTech.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -42,12 +42,19 @@
     <div class="simulador">
         <div class="container">
             <h2>Calcule seus pontos</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-          
+            <div class="campo">
+                <span>Entre com a quantidade de hamburgueres cosumidos diariamente:</span>
+                <input id="ipt_quantidadehamburgueres" type="number" placeholder="1" />
+            </div>
+            <div class="campo">
+                <span>Entre com o nome do hamburguer:</span>
+                <input id="ipt_nomehamburguer" type="text" placeholder="Big Mac" />
+            </div>
+            <button class="botao" onclick="mostrar_calculo()">Calcular</button> <br>
+            <button class="botao" onclick="mostrar_maiorponto()">Hamburguer com Maior Ponto</button>
+            <div id="div_msg"></div>
+
+
 
         </div>
     </div>
@@ -56,7 +63,7 @@
     <!--footer inicio-->
     <div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <h4>Feito por Raphael de Oliveira da turma de 1SIS de 2026 SPTech &copy; 2023</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
@@ -66,3 +73,69 @@
 </body>
 
 </html>
+<script>
+    let quantidade = [];
+    let hamburguer = [];
+    let pontoslista = [];
+
+    function mostrar_calculo() {
+        let qtd = Number(ipt_quantidadehamburgueres.value);
+        let nome = ipt_nomehamburguer.value.trim().toLowerCase();
+
+        let pontos = 0;
+
+        if (nome == "big mac") {
+            pontos = 5;
+        } else if (nome == "whopper") {
+            pontos = 4;
+        } else if (nome == "mc chicken") {
+            pontos = 2;
+        } else if (nome == "quarterão") {
+            pontos = 3;
+        } else {
+            pontos = 5;
+        }
+
+        for (let i = 0; i < hamburger.length; i++) {
+            if (nome == hamburger[i]) {
+                pontos = pontoslista[i];
+                break;
+            }
+        }
+
+        let total = qtd * pontos;
+
+        quantidade.push(qtd);
+        hamburguer.push(nome);
+        pontosLista.push(pontos);
+
+        div_msg.innerHTML = `Você consumiu ${qtd} de ${nome} <br> 
+    Pontos por unidade: ${pontos} <br>
+    Total de pontos: ${total} <br>
+    Utilize o cupom BURGER10 e ganhe 10% de desconto em uma compra!`
+            ;
+    }
+    function mostrar_maiorponto() {
+        let maior = 0;
+        let nomeMaior = "";
+        let primeiro = true;
+
+        for (let i = 0; i < pontoslista.length; i++) {
+
+            let pontos = pontoslista[i];
+
+            if (primeiro) {
+                maior = pontos;
+                nomeMaior = hamburguer[i];
+                primeiro = false;
+            }
+
+            if (pontos > maior) {
+                maior = pontos;
+                nomeMaior = hamburguer[i];
+            }
+        }
+        div_msg.innerHTML += `Hambúrguer com mais pontos: ${nomeMaior} (${maior})
+`;
+    }
+</script>
